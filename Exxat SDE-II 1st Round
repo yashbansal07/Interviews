@@ -1,0 +1,56 @@
+Exxat SDE-II 1st Round
+
+Abstraction vs Encapsulation
+Association and Composition in OOPs
+SOLID Principles
+
+
+Puzzle -
+There are 3 jars, namely, A, B, C. All of them are mislabeled. Following are the labels of each of the jars: 
+
+A: Candies - N -> a+b ||  10 -> 7+3
+B: Sweets - M    11 -> 3+8
+C: Candies and Sweets (mixed in a random proportion) - O
+
+You can put your hand in a jar and pick only one eatable at a time. Tell the minimum number of eatable(s) that has/have to be picked in order to label the jars correctly. 
+
+My Ans:- Max(N,M)
+         But it is wrong, chitra Menon told me it is having an numeric value as an answer.
+
+
+=============================================================
+
+
+Given an integer K and an array arr[] of N integers which contains the ids of the opened apps in a system where 
+
+arr[0] is the app currently in use
+arr[1] is the app which was most recently used and
+arr[N – 1] is the app which was least recently used.
+The task is to print the contents of the array when the user using the system presses Alt + Tab exactly K number of times.
+
+Input: arr[] = {3, 5, 2, 4, 1}, K = 3 
+Output: 4 3 5 2 1 
+
+Solution:-
+
+void reArrangeTabs(int a[], int k){
+	if(k >= a.size())
+		k = k % a.size();
+
+	int newRecentTab = a[k];  // 4
+	for(int i = k; i > 0; ){
+		a[i] = a[i-1];
+		i--;
+	}
+	a[0] = newRecentTab;
+}
+
+At i = 3 
+a[3] = a[3-1] = 2;   3, 5, 2, 2, 1
+
+At i = 2
+a[2] = a[2-1] = 5;   3, 5, 5, 2, 1
+
+At i = 1			       3, 3, 5, 2, 1
+
+i = 0                Loop will exit.
